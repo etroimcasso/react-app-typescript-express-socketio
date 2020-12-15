@@ -1,3 +1,27 @@
+# Tomasso.Tech Portfolio
+
+This uses a standard .env file, with the regular ports and shit i've used.
+
+I'm gonna be super lazy with this file, it's only for me so I don't forget stuff.
+
+use **Yarn**
+
+### For production:
+
+Be sure to use the command below whenever the *server/socketServer.ts* file is changed
+
+```
+npm run compileServer
+```
+
+Then use
+
+```
+npm run production
+```
+
+**Nginx** should be used to redirect the HTTP port traffic to the HTTPS port.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
