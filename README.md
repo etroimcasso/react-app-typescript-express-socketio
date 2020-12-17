@@ -1,4 +1,4 @@
-# Tomasso.Tech Portfolio
+# React App Skeleton w/ Typescript, Express, and Socket.io
 
 This uses a standard .env file, with the regular ports and shit i've used.
 

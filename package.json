@@ -1,5 +1,5 @@
 {
-  "name": "tomasso-tech-portfolio",
+  "name": "react-app-typescript-express-socket-io-skeleton",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "compileServer": "tsc server/socketServer.ts",
+    "compileServer": "tsc server/socketServer.ts server/requiredRoutes.ts server/customRoutes.ts",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "production": "pm2 start process.json"

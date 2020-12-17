@@ -1,6 +1,5 @@
 require('dotenv').config()
 
-
 const express = require('express')
 const forceSSL = require('express-force-ssl')
 const app = express()
@@ -13,10 +12,6 @@ const https = require('https');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
-const root = require('path').join(__dirname, '..', 'build')
-const staticRoot = require('path').join(__dirname, '..', 'build/static')
-const renderRoot = (res) => res.sendFile('index.html', { root })
-
 const sslOptions = {
 	httpsPort: process.env.HTTPS_PORT,
   	key: fs.readFileSync(path.join(__dirname,'../certs/server.key')),
@@ -25,7 +20,6 @@ const sslOptions = {
 
 
 //Configure app
-// Set static path
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -36,10 +30,23 @@ app.set('forceSSLOptions', {
 })
 app.use(forceSSL)
 
-app.use('/static', express.static(staticRoot, { redirect: false }));
+//#region Add static path, root file paths, custom routes, and React app routes
 
-// GET for * -- serves React application
-app.get("*", (req, res) => renderRoot(res))
+// Add static path
+require('./requiredRoutes').addStaticPath(app)
+
+// Add route paths
+require('./requiredRoutes').addRootFiles(app)
+
+// Add custom routes
+require('./customRoutes').customRoutes(app, express)
+// addCustomRoutes(app, express)
+
+// Add React app route
+//! Should always be the last route added
+require('./requiredRoutes').addReactAppPath(app)
+
+//#endregion
 
 // Create HTTP/S server with socketIO functionality
 const server = https.createServer(sslOptions, app)
