@@ -28,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "compileServer": "tsc server/socketServer.ts server/requiredRoutes.ts server/customRoutes.ts",
+    "compileServer": "tsc server/custom/socketServer.ts server/src/requiredRoutes.ts server/custom/customRoutes.ts",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "production": "pm2 start process.json"

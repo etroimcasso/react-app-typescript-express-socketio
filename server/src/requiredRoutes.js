@@ -1,16 +1,16 @@
 "use strict";
 exports.__esModule = true;
-exports.addReactAppPath = exports.addRootFiles = exports.addStaticPath = exports.renderRoot = exports.rootPath = void 0;
+exports.addReactAppPath = exports.addRootFiles = exports.addStaticPath = exports.staticRoot = exports.renderRoot = exports.rootPath = void 0;
 require('dotenv').config();
 var express = require('express');
 var path = require('path');
 // Configure paths
-exports.rootPath = path.join(__dirname, '..', 'build');
+exports.rootPath = path.join(__dirname, '../..', 'build');
 var renderRoot = function (res) { return res.sendFile('index.html', { root: exports.rootPath }); };
 exports.renderRoot = renderRoot;
+exports.staticRoot = path.join(__dirname, '../..', 'build/static');
 var addStaticPath = function (app) {
-    var staticRoot = path.join(__dirname, '..', 'build/static');
-    app.use('/static', express.static(staticRoot, { redirect: false }));
+    app.use('/static', express.static(exports.staticRoot, { redirect: false }));
 };
 exports.addStaticPath = addStaticPath;
 var addRootFiles = function (app) {

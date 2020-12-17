@@ -14,8 +14,8 @@ const cookieParser = require('cookie-parser');
 
 const sslOptions = {
 	httpsPort: process.env.HTTPS_PORT,
-  	key: fs.readFileSync(path.join(__dirname,'../certs/server.key')),
-  	cert: fs.readFileSync(path.join(__dirname,'../certs/server.crt')),
+  	key: fs.readFileSync(path.join(__dirname,'../../certs/server.key')),
+  	cert: fs.readFileSync(path.join(__dirname,'../../certs/server.crt')),
 }
 
 
@@ -39,7 +39,7 @@ require('./requiredRoutes').addStaticPath(app)
 require('./requiredRoutes').addRootFiles(app)
 
 // Add custom routes
-require('./customRoutes').customRoutes(app, express)
+require('../custom/customRoutes').customRoutes(app, express)
 // addCustomRoutes(app, express)
 
 // Add React app route
@@ -52,7 +52,7 @@ require('./requiredRoutes').addReactAppPath(app)
 const server = https.createServer(sslOptions, app)
 const socketIOServer = require('socket.io')(server)
     // Attach server functions to server
-const serverFunction = require('./socketServer').serverFunction
+const serverFunction = require('../custom/socketServer').socketServerFunctions
 socketIOServer.on('connection', serverFunction)
     //Create HTTP server
 http.createServer(app).listen(process.env.HTTP_PORT)

@@ -4,11 +4,11 @@ const express = require('express')
 const path = require('path')
 
 // Configure paths
-export const rootPath = path.join(__dirname, '..', 'build')
+export const rootPath = path.join(__dirname, '../..', 'build')
 export const renderRoot = (res) => res.sendFile('index.html', { root: rootPath })
+export const staticRoot = path.join(__dirname, '../..' , 'build/static')
 
 export const addStaticPath = (app: any) => {
-    const staticRoot = path.join(__dirname, '..', 'build/static')
     app.use('/static', express.static(staticRoot, { redirect: false }));
 }
 

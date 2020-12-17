@@ -1,7 +1,7 @@
 const _REQUEST_getTestInformation = "getTestInformation"
 const _RESPONSE_getTestInformation = "return_getTestInformation"
 
-export const serverFunction = (client) => {
+export const socketServerFunctions = (client) => {
     //#region Get Test Information 
     const getTestInformation = (inputString: String) => {
         console.log(`The Socket Server has been sent the string ${inputString}`)
@@ -13,9 +13,6 @@ export const serverFunction = (client) => {
     client.on(_REQUEST_getTestInformation, getTestInformation)
     //#endregion
 
-    //#region Send Email
-
-
-    //#endregion
+    
 }
 
