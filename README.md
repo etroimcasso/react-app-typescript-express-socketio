@@ -7,13 +7,13 @@ This uses a standard .env file, with the regular ports and configuration details
 Be sure to use the command below whenever a **.ts file** is changed anywhere in the **server** directory
 
 ```
-npm run compileServer && yarn build
+yarn run compileServer && yarn build
 ```
 
 Then use
 
 ```
-npm run production
+yarn run production
 ```
 
 **Nginx** should be used to redirect the HTTP port traffic to the HTTPS port.
