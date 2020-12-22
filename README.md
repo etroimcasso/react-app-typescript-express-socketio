@@ -20,9 +20,33 @@ yarn run production
 
 
 
-## Configuring Routes[^1]
+### Configure Project Settings
+
+The .env file is used to configure the application's ports, email settings, and database settings. Below is a .env template
+
+> **.env**
+>
+> ```
+> INTERNAL_SERVER_NAME=
+> HTTP_PORT=
+> HTTPS_PORT=
+> NO_ROBOTS=
+> ```
+>
+> 
+
+**`INTERNAL_SERVER_NAME`**: Used only for console logging at the moment 
+**`HTTP_PORT`**: The port to serve HTTP from
+**`HTTPS_PORT`**: The port to serve HTTPS from
+**`NO_ROBOTS`**: Enables (`true`) or disables(`false`) *robots.txt*
+
+
+
+### Configuring Routes[^1]
 
 Custom routes can be configured in the **server/custom/customRoutes.ts** file, in the ***customRoutes()*** function. Remember to run `npm run compileServer` whenever modifying this file.
+
+
 
 
 
