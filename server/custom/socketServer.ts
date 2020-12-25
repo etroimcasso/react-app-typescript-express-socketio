@@ -12,7 +12,8 @@ export const socketServerFunctions = (client) => {
 
     client.on(_REQUEST_getTestInformation, getTestInformation)
     //#endregion
-
+    
+    //! Custom socket endpoints go here
     
 }
 
