@@ -35,12 +35,12 @@ The .env file is used to configure the application's ports, email settings, and 
 >
 > 
 
-**`INTERNAL_SERVER_NAME`**: Used only for console logging at the moment 
-**`HTTP_PORT`**: The port to serve HTTP from
-**`HTTPS_PORT`**: The port to serve HTTPS from
-**`NO_ROBOTS`**: Enables (`true`) or disables(`false`) *robots.txt*
+**`INTERNAL_SERVER_NAME`**: Used only for console logging at the moment  
+**`HTTP_PORT`**: The port to serve HTTP from  
+**`HTTPS_PORT`**: The port to serve HTTPS from  
+**`NO_ROBOTS`**: Enables (`true`) or disables(`false`) *robots.txt*.
 
-
+------
 
 ### Configuring Routes[^1]
 
