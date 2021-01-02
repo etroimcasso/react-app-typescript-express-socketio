@@ -42,7 +42,23 @@ The .env file is used to configure the application's ports, email settings, and 
 
 ------
 
-### Configuring Routes[^1]
+### Configuring SSL Options
+
+The SSL certificate files go in the `certs` folder.  
+
+>key: server.key  
+>certificate: server.crt  
+
+#### SSL with Let's Encrypt
+
+The Let's Encrypt tool will generate a number of files, but the important ones are:
+
+>`privkey.pem` - rename to `server.key`  
+>`fullchain.pem` - rename to `server.crt
+
+------
+
+### **Configuring Routes[^1]**
 
 Custom routes can be configured in the **server/custom/customRoutes.ts** file, in the ***customRoutes()*** function. Remember to run `npm run compileServer` whenever modifying this file.
 
