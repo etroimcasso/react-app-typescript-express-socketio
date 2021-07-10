@@ -7,7 +7,13 @@ This uses a standard .env file, with the regular ports and configuration details
 Be sure to use the command below whenever a **.ts file** is changed anywhere in the **server** directory
 
 ```
-yarn compileServer && yarn build
+yarn compileServer
+```
+
+When working on files in the **src** directory, run the below command to build the web application
+
+```
+yarn build
 ```
 
 Then use
