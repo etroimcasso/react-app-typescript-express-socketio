@@ -7,13 +7,13 @@ This uses a standard .env file, with the regular ports and configuration details
 Be sure to use the command below whenever a **.ts file** is changed anywhere in the **server** directory
 
 ```
-yarn run compileServer && yarn build
+yarn compileServer && yarn build
 ```
 
 Then use
 
 ```
-yarn run production
+yarn production
 ```
 
 **Nginx** should be used to redirect the HTTP port traffic to the HTTPS port.
@@ -60,12 +60,11 @@ The Let's Encrypt tool will generate a number of files, but the important ones a
 
 ### **Configuring Routes[^1]**
 
-Custom routes can be configured in the **server/custom/customRoutes.ts** file, in the ***customRoutes()*** function. Remember to run `npm run compileServer` whenever modifying this file.
+Custom routes can be configured in the **server/custom/customRoutes.ts** file, in the ***customRoutes()*** function. Remember to run `yarn compileServer` whenever modifying this file.
 
 
 
 
 
 [^1]: Due to the presence of a Socket.io server, custom routes will not generally be needed.
-
 
