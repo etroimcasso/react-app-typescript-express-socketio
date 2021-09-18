@@ -22,11 +22,25 @@ When working on files in the **src** directory, run the below command to build t
 yarn buildApp
 ```
 
-Then use the following command to start the pm2 process. This will automatically 
+Then use the following command to start the pm2 process.
 
 ```bash
 yarn production
 ```
+
+If you're doing development, it is recommended to use the development server along with `yarn autoBuildServer` command from above
+
+```bash
+yarn devServer
+```
+
+If you want to clean all build directories and delete all log files, rebuild the app and the server, and start up the production server in one command.
+
+```bash
+yarn doEverything
+```
+
+ 
 
 **Nginx** should be used to redirect the HTTP port traffic to the HTTPS port.
 
