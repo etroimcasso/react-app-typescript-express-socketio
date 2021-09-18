@@ -32,7 +32,7 @@
     "buildServer": "tsc -p ./server/tsconfig.build.json",
     "autoBuildServer": "tsc -p ./server/tsconfig.autobuild.json",
     "stopAutoBuildServer": "killall tsc",
-    "cleanServer": "rm -rf bin",
+    "cleanServer": "rm -rf bin_www",
     "buildAll": "yarn buildApp && yarn buildServer",
     "cleanAll": "yarn cleanApp && yarn cleanServer",
     "cleanBuild": "yarn cleanAll && yarn buildAll",
