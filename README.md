@@ -26,7 +26,7 @@ Then use the following command to start the pm2 process.
 yarn production
 ```
 
-If you're doing development, it is recommended to use the development server along with `yarn autoBuildServer` command from above
+If you're doing development, it is recommended to use the development server along with the `yarn autoBuildServer` command from above
 
 ```bash
 yarn devServer
