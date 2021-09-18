@@ -2,8 +2,8 @@
     "apps" : [{
       "name": "React-TS-Express-SocketIO",
       "script": "./bin/src/server.js",
-      "watch": ["./server", "./build", "./bin"],
-      "ignore_watch" : ["./node_modules", "./certs","./cli","./public","./src"],
+      "watch": ["./build", "./bin"],
+      "ignore_watch" : ["./node_modules", "./certs","./cli","./public","./src", "./server"],
       "watch_options": {
         "followSymlinks": false
       },
