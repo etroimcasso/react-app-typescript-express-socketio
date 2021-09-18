@@ -24,5 +24,5 @@ export const addRootFiles = (app: any) => {
 
 export const addReactAppPath = (app: any) => {
     // Catch All (for react app)
-    app.get("*", (req, res) => renderRoot(res))
+    app.get("/", (req, res) => renderRoot(res))
 }

@@ -6,16 +6,19 @@ const app = express()
 
 const path = require('path');
 const fs = require('fs');
-const http = require('http');
+// const http = require('http');
 const https = require('https');
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
+const key_file = process.env.KEY_FILE ?? "server.key"
+const cert_file = process.env.CERT_FILE ?? "server.crt"
+
 const sslOptions = {
 	httpsPort: process.env.HTTPS_PORT,
-  	key: fs.readFileSync(path.join(__dirname,'../../certs/server.key')),
-  	cert: fs.readFileSync(path.join(__dirname,'../../certs/server.crt')),
+  	key: fs.readFileSync(path.join(__dirname,`../../certs/${key_file}`)),
+  	cert: fs.readFileSync(path.join(__dirname,`../../certs/${cert_file}`)),
 }
 
 
@@ -39,11 +42,11 @@ require('./requiredRoutes').addStaticPath(app)
 require('./requiredRoutes').addRootFiles(app)
 
 // Add custom routes
-require('../routes/customRoutes').customRoutes(app, express)
+require('../routes/customRoutes').customRoutes(app)
 // addCustomRoutes(app, express)
 
 // Add React app route
-//! Should always be the last route added
+//! Should always be the last routes added
 require('./requiredRoutes').addReactAppPath(app)
 
 //#endregion
@@ -55,7 +58,7 @@ const socketIOServer = require('socket.io')(server)
 const serverFunction = require('../sockets/socketServer').socketServerFunctions
 socketIOServer.on('connection', serverFunction)
     //Create HTTP server
-http.createServer(app).listen(process.env.HTTP_PORT)
+// http.createServer(app).listen(process.env.HTTP_PORT)
 server.listen(process.env.HTTPS_PORT,() => {
 	console.log(`Serving ${process.env.INTERNAL_SERVER_NAME} on port ${process.env.HTTPS_PORT}`)
 })

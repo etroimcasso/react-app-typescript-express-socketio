@@ -29,7 +29,9 @@
     "start": "react-scripts start",
     "buildApp": "react-scripts build",
     "cleanApp": "rm -rf build",
-    "buildServer": "tsc -p ./server",
+    "buildServer": "tsc -p ./server/tsconfig.build.json",
+    "autoBuildServer": "tsc -p ./server/tsconfig.autobuild.json",
+    "stopAutoBuildServer": "killall tsc",
     "cleanServer": "rm -rf bin",
     "buildAll": "yarn buildApp && yarn buildServer",
     "cleanAll": "yarn cleanApp && yarn cleanServer",
@@ -37,7 +39,9 @@
     "cleanLogs": "rm -rf logs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "production": "pm2 start process.json"
+    "production": "pm2 start process.json",
+    "cleanBuildAllProduction": "pm2 kill && yarn cleanLogs && yarn cleanAll && yarn buildAll && yarn production",
+    "cleanBuildServerProduction": "pm2 kill && yarn cleanLogs && yarn cleanServer && yarn buildServer && yarn production"
   },
   "eslintConfig": {
     "extends": [
