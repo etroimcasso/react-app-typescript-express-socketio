@@ -20,11 +20,7 @@ When working on files in the **src** directory, run the below command to build t
 yarn buildApp
 ```
 
-Then use the following command to start the pm2 process:
-
-```bash
-yarn production
-```
+### Development
 
 If you're doing development, it is recommended to use the development server along with the `yarn autoBuildServer` command from above:
 
@@ -32,15 +28,25 @@ If you're doing development, it is recommended to use the development server alo
 yarn devServer
 ```
 
+### Production
+
+Then use the following command to start the pm2 process:
+
+```bash
+yarn production
+```
+
+Running this command will create a thread on all available cpu cores. You can change this by changing the value in quotes from *max* to the number of cores you would like to use. 
+
+### Laziness
+
 If you want to clean all build directories and delete all log files, rebuild the app and the server, and start up the production server in one command:
 
 ```bash
 yarn doEverything
 ```
 
- 
-
-**Nginx** should be used to redirect the HTTP port traffic to the HTTPS port.
+ **Nginx** should be used to redirect the HTTP port traffic to the HTTPS port.
 
 ### Configure Project Settings
 
@@ -75,5 +81,6 @@ The Let's Encrypt tool will generate a number of files, but the important ones a
 
 Custom routes can be configured in the **server/routes/routes.ts** file, in the ***customRoutes()*** function. Remember to run `yarn buildServer` whenever modifying this file.
 
-Custom routes are generally discouraged when creating React apps, as they can conflict with React Router. However, if only backend functionality is desired, then using custom routes will not be an issue.
+Custom routes are generally discouraged when creating React apps, as they can conflict with React Router. However, if only backend functionality is desired, then using custom routes will not be an issue. In most situations, WebSockets are preferred.
 
+### 
