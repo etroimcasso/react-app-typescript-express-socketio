@@ -64,13 +64,8 @@ The Let's Encrypt tool will generate a number of files, but the important ones a
 
 ------
 
-### **Configuring Routes[^1]**
+### **Configuring Routes**
 
 Custom routes can be configured in the **server/custom/customRoutes.ts** file, in the ***customRoutes()*** function. Remember to run `yarn buildServer` whenever modifying this file.
 
-
-
-
-
-[^1]: Due to the presence of a Socket.io server, custom routes will not generally be needed.
 
