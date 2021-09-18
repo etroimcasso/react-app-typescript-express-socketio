@@ -21,7 +21,7 @@
     // "noEmit": true,
     "removeComments": true,
     "jsx": "react-jsx",
-    "outDir": "../bin",
+    "outDir": "../bin_www",
     "noImplicitAny": false,
     // "listFiles": true,
   },

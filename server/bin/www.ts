@@ -12,14 +12,28 @@ const https = require('https');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
-const key_file = process.env.KEY_FILE ?? "server.key"
-const cert_file = process.env.CERT_FILE ?? "server.crt"
+const defaultKeyFileName = "server.key"
+const defaultCertFileName = "server.crt"
+
+const key_file = process.env.KEY_FILE ? (() => {
+    const key = process.env.KEY_FILE
+    return key!.length > 0 ? key : defaultKeyFileName 
+})() : defaultKeyFileName
+
+const cert_file = process.env.CERT_FILE ? (() => {
+    const cert = process.env.CERT_FILE
+    return cert!.length > 0 ? cert : defaultCertFileName 
+})() : defaultCertFileName
 
 const sslOptions = {
 	httpsPort: process.env.HTTPS_PORT,
-  	key: fs.readFileSync(path.join(__dirname,`../../certs/${key_file}`)),
-  	cert: fs.readFileSync(path.join(__dirname,`../../certs/${cert_file}`)),
+  	key: fs.readFileSync(path.join(__dirname,`../../certs/${key_file ?? "server.key"}`)),
+  	cert: fs.readFileSync(path.join(__dirname,`../../certs/${cert_file ?? "server.crt"}`)),
 }
+
+export const rootPath = path.join(__dirname, '../..', 'build')
+export const renderRoot = (res) => res.sendFile('index.html', { root: rootPath })
+export const staticRoot = path.join(__dirname, '../..' , 'build/static')
 
 
 //Configure app
@@ -36,19 +50,25 @@ app.use(forceSSL)
 //#region Add static path, root file paths, custom routes, and React app routes
 
 // Add static path
-require('./requiredRoutes').addStaticPath(app)
+app.use('/static', express.static(staticRoot, { redirect: false }));
 
 // Add route paths
-require('./requiredRoutes').addRootFiles(app)
+app.get('/favicon.ico', (_, res) => res.sendFile(`${rootPath}/favicon.ico`))
+app.get('/asset-manifest.json', (_, res) => res.sendFile(`${rootPath}/asset-manifest.json`))
+app.get('/manifest.json', (_, res) => res.sendFile(`${rootPath}/manifest.json`))
+
+if (process.env.NO_ROBOTS) {
+    app.get('/robots.txt', (req, res) => res.sendFile(`${rootPath}/robots.txt`))
+}
 
 // Add custom routes
-require('../routes/customRoutes').customRoutes(app)
+require('../routes/routes').customRoutes(app)
 // addCustomRoutes(app, express)
 
 // Add React app route
 //! Should always be the last routes added
-require('./requiredRoutes').addReactAppPath(app)
-
+// Catch All (for react app)
+app.get("/*", (req, res) => renderRoot(res))
 //#endregion
 
 // Create HTTP/S server with socketIO functionality
@@ -64,3 +84,4 @@ server.listen(process.env.HTTPS_PORT,() => {
 })
 
 export {}
+

@@ -2,7 +2,7 @@
 
 This uses a standard .env file, with the regular ports and configuration details I've used in the past
 
-### For production:
+### Usage:
 
 Be sure to use the command below whenever a **.ts file** is changed anywhere in the **server** directory. 
 
@@ -38,8 +38,8 @@ The *.env* file is used to configure the application's ports, email settings, an
 **`HTTP_PORT`**: The port to serve HTTP from  
 **`HTTPS_PORT`**: The port to serve HTTPS from  
 **`NO_ROBOTS`**: Enables (`true`) or disables(`false`) *robots.txt*.  
-**`KEY_FILE`**: Path to private key file. If left empty, expected file is *certs/server.key*  
-**`CERT_FILE`**: Path to certificate file. If left empty, expected file is *certs/server.crt*  
+**`KEY_FILE`**: Name of private key file in *certs*. If left empty, expected file is *certs/server.key*  
+**`CERT_FILE`**: Name of certificate file in *certs*. If left empty, expected file is *certs/server.crt*  
 
 ------
 

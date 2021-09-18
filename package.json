@@ -39,9 +39,11 @@
     "cleanLogs": "rm -rf logs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "production": "pm2 start process.json",
+    "production": "pm2 kill && pm2 start process.json",
+    "devServer": "nodemon bin_www/bin/www.js",
     "cleanBuildAllProduction": "pm2 kill && yarn cleanLogs && yarn cleanAll && yarn buildAll && yarn production",
-    "cleanBuildServerProduction": "pm2 kill && yarn cleanLogs && yarn cleanServer && yarn buildServer && yarn production"
+    "cleanBuildServerProduction": "pm2 kill && yarn cleanLogs && yarn cleanServer && yarn buildServer && yarn production",
+    "doEverything": "pm2 kill & yarn cleanAll & yarn cleanLogs && yarn buildServer && yarn buildApp && yarn production"
   },
   "eslintConfig": {
     "extends": [
