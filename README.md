@@ -61,5 +61,5 @@ The Let's Encrypt tool will generate a number of files, but the important ones a
 
 ### **Configuring Routes**
 
-Custom routes can be configured in the **server/custom/customRoutes.ts** file, in the ***customRoutes()*** function. Remember to run `yarn buildServer` whenever modifying this file.
+Custom routes can be configured in the **server/routes/routes.ts** file, in the ***customRoutes()*** function. Remember to run `yarn buildServer` whenever modifying this file.
 
