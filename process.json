@@ -1,7 +1,7 @@
 {
     "apps" : [{
       "name": "React-TS-Express-SocketIO",
-      "script": "./server/src/server.js",
+      "script": "./server/build/src/server.js",
       "watch": ["./server", "./build"],
       "ignore_watch" : ["./node_modules", "./certs","./cli","./public","./src"],
       "watch_options": {
