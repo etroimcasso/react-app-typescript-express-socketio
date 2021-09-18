@@ -2,6 +2,22 @@
 
 ### Usage:
 
+When working on files in the **src** directory, run the below command to build the web application:
+
+```bash
+yarn buildApp
+```
+
+### Development
+
+If you're doing development, it is recommended to use the development server. This will automatically update with any changes you have in the *server* folder
+
+```bash
+yarn devServer
+```
+
+### Production
+
 Be sure to use the command below whenever a **.ts file** is changed anywhere in the **server** directory. 
 
 ```bash
@@ -13,22 +29,6 @@ Alternatively, you can enable automatic builds using the following command. This
 ```bash
 yarn autoBuildServer
 ```
-
-When working on files in the **src** directory, run the below command to build the web application:
-
-```bash
-yarn buildApp
-```
-
-### Development
-
-If you're doing development, it is recommended to use the development server. This will automatically update with any changes you have in the 
-
-```bash
-yarn devServer
-```
-
-### Production
 
 Then use the following command to start the pm2 process:
 
@@ -91,7 +91,7 @@ The production server uses PM2, which will automatically restart the application
 
 pm2 uses the file *process.json* for the server configuration. 
 
-- "instances": can be set to *max* to utilize all cores, or set to "(number of cores)" as low as 1 
+- **"instances"**: can be set to *max* to utilize all cores, or set to "(number of cores)" as low as 1 
 
 ### Persistence
 
