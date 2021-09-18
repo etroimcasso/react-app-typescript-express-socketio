@@ -8,7 +8,7 @@ Be sure to use the command below whenever a **.ts file** is changed anywhere in 
 yarn buildServer
 ```
 
-Alternatively, you can enable automatic builds using the following command. This command works as both a development and production tool -- git pull will cause a new build, and any changes a developer makes will also trigger new builds:
+Alternatively, you can enable automatic builds using the following command. This command works as a production tool -- `git pull` on the server will cause a new build
 
 ```bash
 yarn autoBuildServer
@@ -22,7 +22,7 @@ yarn buildApp
 
 ### Development
 
-If you're doing development, it is recommended to use the development server along with the `yarn autoBuildServer` command from above:
+If you're doing development, it is recommended to use the development server. This will automatically update with any changes you have in the 
 
 ```bash
 yarn devServer
@@ -83,4 +83,34 @@ Custom routes can be configured in the **server/routes/routes.ts** file, in the 
 
 Custom routes are generally discouraged when creating React apps, as they can conflict with React Router. However, if only backend functionality is desired, then using custom routes will not be an issue. In most situations, WebSockets are preferred.
 
-### 
+## Configuring the Production Server 
+
+The production server uses PM2, which will automatically restart the application if something goes wrong, and allows you to run the server on as many cores as possible. PM2 is run when using the command `yarn production`
+
+### Options
+
+pm2 uses the file *process.json* for the server configuration. 
+
+- "instances": can be set to *max* to utilize all cores, or set to "<number of cores>" as low as 1 
+
+### Persistence
+
+If you want your application to return after a reboot, start up your production server first, then run the following command:
+
+```bash
+pm2 startup
+```
+
+You will be given a command to run. Run it, then use this next command:
+
+```bash
+pm2 save
+```
+
+If you no longer want this to happen, use this command:
+
+```bash
+pm2 unstartup
+```
+
+Now your application will restart automatically when it crashes, and restart automatically when the computer reboots.
