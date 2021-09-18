@@ -91,7 +91,7 @@ The production server uses PM2, which will automatically restart the application
 
 pm2 uses the file *process.json* for the server configuration. 
 
-- "instances": can be set to *max* to utilize all cores, or set to "<number of cores>" as low as 1 
+- "instances": can be set to *max* to utilize all cores, or set to "(number of cores)" as low as 1 
 
 ### Persistence
 
