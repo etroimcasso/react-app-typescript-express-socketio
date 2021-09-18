@@ -6,6 +6,6 @@ const rootPath = require('../bin/www').rootPath
 
 export const customRoutes = (app: any) => {
     app.get('/test', (req, res) => {
-        res.send(`${rootPath}`)
+        res.send(`App build directory is: ${rootPath}`)
     })
 }

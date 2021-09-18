@@ -77,3 +77,5 @@ The Let's Encrypt tool will generate a number of files, but the important ones a
 
 Custom routes can be configured in the **server/routes/routes.ts** file, in the ***customRoutes()*** function. Remember to run `yarn buildServer` whenever modifying this file.
 
+Custom routes are generally discouraged when creating React apps, as they can conflict with React Router. However, if only backend functionality is desired, then using custom routes will not be an issue.
+
