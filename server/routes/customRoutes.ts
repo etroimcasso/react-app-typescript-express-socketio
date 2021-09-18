@@ -3,6 +3,10 @@ const path = require('path')
 
 const rootPath = require('../src/requiredRoutes').rootPath
 
-export const customRoutes = (app: any) => {
+const adminPath = 'admin'
 
+export const customRoutes = (app: any) => {
+    app.get('test', (req, res) => {
+        res.send("Test Route")
+    })
 }
