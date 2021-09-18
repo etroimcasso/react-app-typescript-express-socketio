@@ -59,3 +59,5 @@ http.createServer(app).listen(process.env.HTTP_PORT)
 server.listen(process.env.HTTPS_PORT,() => {
 	console.log(`Serving ${process.env.INTERNAL_SERVER_NAME} on port ${process.env.HTTPS_PORT}`)
 })
+
+export {}

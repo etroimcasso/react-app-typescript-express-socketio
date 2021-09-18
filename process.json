@@ -12,6 +12,8 @@
       },
       "env_production" : {
          "NODE_ENV": "production"
-      }
+      },
+      "error": "./logs/server-err.log",
+      "output": "./logs/server-out.log"
    }]
   }

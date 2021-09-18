@@ -28,6 +28,7 @@ yarn-error.log*
 /server/src/requiredRoutes.js
 /server/build
 bin
+logs
 
 .eslintcache
 

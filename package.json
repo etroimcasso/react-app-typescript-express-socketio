@@ -34,6 +34,7 @@
     "buildAll": "yarn buildApp && yarn buildServer",
     "cleanAll": "yarn cleanApp && yarn cleanServer",
     "cleanBuild": "yarn cleanAll && yarn buildAll",
+    "cleanLogs": "rm -rf logs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "production": "pm2 start process.json"
