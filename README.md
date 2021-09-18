@@ -1,7 +1,5 @@
 # React App Skeleton w/ Typescript, Express, and Socket.io
 
-This uses a standard .env file, with the regular ports and configuration details I've used in the past
-
 ### Usage:
 
 Be sure to use the command below whenever a **.ts file** is changed anywhere in the **server** directory. 
