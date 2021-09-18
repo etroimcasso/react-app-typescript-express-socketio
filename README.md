@@ -8,31 +8,31 @@ Be sure to use the command below whenever a **.ts file** is changed anywhere in 
 yarn buildServer
 ```
 
-Alternatively, you can enable automatic builds using the following command. This command works as both a development and production tool -- git pull will cause a new build, and any changes a developer makes will also trigger new builds
+Alternatively, you can enable automatic builds using the following command. This command works as both a development and production tool -- git pull will cause a new build, and any changes a developer makes will also trigger new builds:
 
 ```bash
 yarn autoBuildServer
 ```
 
-When working on files in the **src** directory, run the below command to build the web application
+When working on files in the **src** directory, run the below command to build the web application:
 
 ```bash
 yarn buildApp
 ```
 
-Then use the following command to start the pm2 process.
+Then use the following command to start the pm2 process:
 
 ```bash
 yarn production
 ```
 
-If you're doing development, it is recommended to use the development server along with the `yarn autoBuildServer` command from above
+If you're doing development, it is recommended to use the development server along with the `yarn autoBuildServer` command from above:
 
 ```bash
 yarn devServer
 ```
 
-If you want to clean all build directories and delete all log files, rebuild the app and the server, and start up the production server in one command.
+If you want to clean all build directories and delete all log files, rebuild the app and the server, and start up the production server in one command:
 
 ```bash
 yarn doEverything
