@@ -52,13 +52,13 @@ yarn doEverything
 
 The *.env* file is used to configure the application's ports, email settings, and database settings. The file *.env.template* contains a template of the file and can be simply renamed *.env* if desired. Below is the expected format of the file: 
 
-**`INTERNAL_SERVER_NAME`**: Used only for console logging at the moment  
-**`HTTP_PORT`**: The port to serve HTTP from  
-**`HTTPS_PORT`**: The port to serve HTTPS from  
-**`NO_ROBOTS`**: Enables (`true`) or disables(`false`) *robots.txt*.  
-**`KEY_FILE`**: Name of private key file in *certs*. If left empty, expected file is *certs/server.key* 
-**`CERT_FILE`**: Name of certificate file in *certs*. If left empty, expected file is *certs/server.crt*    
-**`DATABASE_URL`**: (optional) Database connection URL
+- **`INTERNAL_SERVER_NAME`**: Used only for console logging at the moment  
+- **`HTTP_PORT`**: The port to serve HTTP from  
+- **`HTTPS_PORT`**: The port to serve HTTPS from  
+- **`NO_ROBOTS`**: Enables (`true`) or disables(`false`) *robots.txt*.  
+- **`KEY_FILE`**: Name of private key file in *certs*. If left empty, expected file is *certs/server.key* 
+- **`CERT_FILE`**: Name of certificate file in *certs*. If left empty, expected file is *certs/server.crt*    
+- **`DATABASE_URL`**: (optional) Database connection URL
 
 #### Choosing a Database
 
