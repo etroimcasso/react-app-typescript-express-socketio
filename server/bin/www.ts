@@ -62,8 +62,7 @@ if (process.env.NO_ROBOTS) {
 }
 
 // Add custom routes
-require('../routes/routes').customRoutes(app)
-// addCustomRoutes(app, express)
+require('../routes/routes').routes(app)
 
 // Add React app route
 //! Should always be the last routes added
