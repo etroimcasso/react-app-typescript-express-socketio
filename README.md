@@ -57,7 +57,7 @@ The *.env* file is used to configure the application's ports, email settings, an
 **`HTTPS_PORT`**: The port to serve HTTPS from  
 **`NO_ROBOTS`**: Enables (`true`) or disables(`false`) *robots.txt*.  
 **`KEY_FILE`**: Name of private key file in *certs*. If left empty, expected file is *certs/server.key* 
-**`CERT_FILE`**: Name of certificate file in *certs*. If left empty, expected file is *certs/server.crt* 
+**`CERT_FILE`**: Name of certificate file in *certs*. If left empty, expected file is *certs/server.crt*
 **`DATABASE_URL`**: (optional) Database connection URL
 
 #### Choosing a Database
