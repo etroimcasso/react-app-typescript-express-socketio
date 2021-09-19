@@ -75,7 +75,7 @@ app.get("/*", (req, res) => renderRoot(res))
 const server = https.createServer(sslOptions, app)
 const socketIOServer = require('socket.io')(server)
     // Attach server functions to server
-const serverFunction = require('../sockets/socketServer').socketServerFunctions
+const serverFunction = require('../sockets/sockets').socketServerFunctions
 socketIOServer.on('connection', serverFunction)
     //Create HTTP server
 // http.createServer(app).listen(process.env.HTTP_PORT)
