@@ -4,6 +4,7 @@
       "script": "./bin_www/bin/www.js",
       "instances" : "max",
       "exec_mode" : "cluster",
+      "wait_ready": true,
       "watch": ["./build", "./bin_www"],
       "ignore_watch" : ["./node_modules", "./certs","./cli","./public","./src", "./server"],
       "watch_options": {

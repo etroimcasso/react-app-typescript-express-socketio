@@ -67,6 +67,7 @@ require('../routes/routes').routes(app)
 // Add React app route
 //! Should always be the last routes added
 // Catch All (for react app)
+// -------Comment out the following line to disable the front end React app
 app.get("/*", (req, res) => renderRoot(res))
 //#endregion
 
@@ -82,6 +83,6 @@ server.listen(process.env.HTTPS_PORT,() => {
 	console.log(`Serving ${process.env.INTERNAL_SERVER_NAME} on port ${process.env.HTTPS_PORT}`)
 })
 
-
+process.send!('ready')
 export {}
 
