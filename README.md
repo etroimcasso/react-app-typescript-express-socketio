@@ -58,8 +58,16 @@ The *.env* file is used to configure the application's ports, email settings, an
 **`NO_ROBOTS`**: Enables (`true`) or disables(`false`) *robots.txt*.  
 **`KEY_FILE`**: Name of private key file in *certs*. If left empty, expected file is *certs/server.key* 
 **`CERT_FILE`**: Name of certificate file in *certs*. If left empty, expected file is *certs/server.crt* 
-**`DB_TYPE`**: (optional) options are *postgresql*, *mysql*, or *mongodb*
 **`DB_URL`**: (optional) Database connection URL
+
+#### Choosing a Database
+
+The file *server/prisma/schema.prisma* contains property called *provider* in the *database db* entry. Changing this value determines which database to use. The current options are:
+
+- postgresql
+- mysql
+
+**postgresql is the default option.**
 
 ------
 
