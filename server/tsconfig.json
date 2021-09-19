@@ -17,12 +17,9 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    // "noEmit": true,
-    "removeComments": true,
     "jsx": "react-jsx",
     "outDir": "../bin_www",
     "noImplicitAny": false,
-    // "listFiles": true,
   },
   "include": [
     "./"
