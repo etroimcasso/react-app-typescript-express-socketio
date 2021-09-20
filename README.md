@@ -36,7 +36,7 @@ Then use the following command to start the pm2 process:
 yarn production
 ```
 
-Running this command will create a thread on all available cpu cores. You can change this by changing the value in quotes from *max* to the number of cores you would like to use. 
+Running this command will create a thread on all available cpu cores. This behavior can be changed by modifying the *process.json* file; details are in the **Configuring the Production Server** section
 
 ### Laziness
 
