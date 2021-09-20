@@ -29,16 +29,16 @@
     "stopAutoBuildServer": "killall tsc",
     "cleanServer": "rm -rf bin_www",
     "buildAll": "yarn buildApp && yarn buildServer",
-    "cleanAll": "yarn cleanApp && yarn cleanServer",
     "cleanBuild": "yarn cleanAll && yarn buildAll",
+    "cleanAll": "yarn cleanApp && yarn cleanServer && yarn cleanLogs",
     "cleanLogs": "rm -rf logs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "production": "pm2 kill && pm2 start process.json",
     "devServer": "nodemon server/bin/www.ts --watch server",
-    "cleanBuildAllProduction": "pm2 kill && yarn cleanLogs && yarn cleanAll && yarn buildAll && yarn production",
+    "cleanBuildAllProduction": "pm2 kill && yarn cleanAll && yarn buildAll && yarn production",
     "cleanBuildServerProduction": "pm2 kill && yarn cleanLogs && yarn cleanServer && yarn buildServer && yarn production",
-    "doEverything": "pm2 kill & yarn cleanAll & yarn cleanLogs && yarn buildServer && yarn buildApp && yarn production"
+    "doEverything": "pm2 kill & yarn cleanAll && yarn buildServer && yarn buildApp && yarn production"
   },
   "eslintConfig": {
     "extends": [
@@ -68,5 +68,9 @@
     "pm2": "^5.1.1",
     "prisma": "^3.0.2",
     "ts-node": "^10.2.1"
+  },
+  "prisma": {
+    "schema": "sdatabase/schema.prisma",
+    "seed": "ts-node database/seed.ts"
   }
 }
