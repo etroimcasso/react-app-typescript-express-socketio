@@ -15,7 +15,6 @@ export const socketServerFunctions = (client) => {
     //#endregion
     
     //! Custom socket endpoints go here
-
-    
+        
 }
 

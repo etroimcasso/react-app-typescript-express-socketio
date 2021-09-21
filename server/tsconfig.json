@@ -20,9 +20,9 @@
     "jsx": "react-jsx",
     "outDir": "../bin_www",
     "noImplicitAny": false,
+    "incremental": true
   },
   "include": [
     "./"
   ],
 }
-
