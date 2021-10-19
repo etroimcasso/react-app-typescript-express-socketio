@@ -1,5 +1,6 @@
 const headerSpacer = "----------"
 const itemSpacer = "---"
+const tabSpace = "    "
 
 export enum LogMessageType {
     "error",
@@ -18,6 +19,16 @@ const logMessageTypeToConsoleFunctionMap: ReadonlyMap<LogMessageType, (arg0: Str
 export const logToConsole = (type: LogMessageType, caller: String, message: String) => {
     const logFunction: (arg0: String) => void = logMessageTypeToConsoleFunctionMap.get(type)!
     logFunction(`${new Date().toISOString()} - ${caller} ${headerSpacer}`)
-    logFunction(`${itemSpacer} ${message}`)
-    logFunction(`${headerSpacer}${headerSpacer}`)
+    logFunction(`${tabSpace} ${message}`)
+    // logFunction(`${itemSpacer} ${message}`)
+    // logFunction(`${headerSpacer}${headerSpacer}`)
 }
+
+export const queryFailureResponse = <T, >(moduleName, query, failureResponse: T): Promise<T> => {
+    logToConsole(LogMessageType.error, moduleName, `Unable to complete query:`)
+    logToConsole(LogMessageType.error, moduleName, query)
+    return new Promise<T>((resolve) => resolve(failureResponse))
+}
+
+export const logGenericError = (moduleName, error) => 
+    logToConsole(LogMessageType.error, moduleName, `Caught error: ${error}`)
