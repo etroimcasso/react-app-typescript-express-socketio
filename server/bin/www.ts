@@ -61,6 +61,9 @@ if (process.env.NO_ROBOTS) {
     app.get('/robots.txt', (req, res) => res.sendFile(`${rootPath}/robots.txt`))
 }
 
+const publicSharePath = `${rootPath}/share`
+app.get("/share/:fileName(*)", (req, res, next) => res.sendFile(path.join(publicSharePath, `${req.params.fileName}`)))
+
 // Add custom routes
 require('../routes/routes').routes(app)
 

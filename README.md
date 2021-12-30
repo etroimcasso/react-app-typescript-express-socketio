@@ -124,3 +124,10 @@ pm2 unstartup
 ```
 
 Now your application will restart automatically when it crashes, and restart automatically when the computer reboots.
+
+
+
+## Accessing Server Files
+
+All files that need to be remotely accessible by the frontend need to be placed in *public/share*
+
