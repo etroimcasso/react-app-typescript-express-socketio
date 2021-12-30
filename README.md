@@ -129,5 +129,5 @@ Now your application will restart automatically when it crashes, and restart aut
 
 ## Accessing Server Files
 
-All files that need to be remotely accessible by the frontend need to be placed in *public/share*
+All files that need to be remotely accessible by the frontend need to be placed in *public/share* and will be accessible at *hostname/share*
 
