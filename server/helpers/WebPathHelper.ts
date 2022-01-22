@@ -6,6 +6,6 @@ export class WebPathHelper {
     }
 
     path(endpoint: String): String {
-        return `${this.routeRoot}/${endpoint}`
+        return `${this.routeRoot}${ endpoint != '/' ? `/${endpoint}` : '/'}`
     }
 }
