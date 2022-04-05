@@ -78,6 +78,12 @@ export const StatusCodeTitleMap: ReadonlyMap<StatusCodes, String> = new Map([
     [StatusCodes._510, "Not Extended"],
     [StatusCodes._511, "Network Authentication Required"],
 ])
+
+export type ErrorResponse = {
+    errorCode?: string, 
+    errorMessage: string
+}
+
 // TODO
 export const respondWithStatusCode =  <T, >(res, statusCode: StatusCodes, response?: T) => 
     res.status(statusCode).send(response ?? "")
@@ -86,3 +92,6 @@ export const respondWithStatusCode =  <T, >(res, statusCode: StatusCodes, respon
 export const unauthorizedResponse = <T, >(res, response?: T) => 
     respondWithStatusCode(res, StatusCodes._401, response ?? "")
     // res.status(StatusCodes._401).send(message)
+
+export const respondWithError =  <T, >(res, statusCode: StatusCodes, error: ErrorResponse) => 
+    res.status(statusCode).send({ errorCode: error.errorCode, errorMessage: error.errorMessage })    

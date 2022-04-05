@@ -9,6 +9,12 @@ export const routes = (app: any) => {
     require('./admin').routes(app)
     
     app.get('/test', (req, res) => {
+
+        // await checkForRequiredParameters(res, [
+        //     ["userId", !userId],
+        //     ["email", !email]
+        // ])
+        
         res.send(`App build directory is: ${rootPath}`)
     })
 }
