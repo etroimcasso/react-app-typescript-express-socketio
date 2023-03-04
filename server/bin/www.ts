@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 import { checkEnvBooleanValue } from "../helpers/envFunctions";
-import { defaultServerName, hasFrontendBootMessage, trueFalseEnabledDisabled, usingTlsMessage } from "../resources/strings";
+import { defaultServerName, hasFrontendBootMessage, trueFalseEnabledDisabled, usingSocketsMessage, usingTlsMessage } from "../resources/strings";
 import { bootCheck } from "./bootCheck";
 
 const express = require('express')
@@ -18,6 +18,7 @@ const cookieParser = require('cookie-parser');
 
 const useTls = !checkEnvBooleanValue(process.env.NO_TLS)
 const hasFrontend = checkEnvBooleanValue(process.env.FRONTEND)
+const useSockets = checkEnvBooleanValue(process.env.SOCKETS)
 const hasName = typeof(process.env.INTERNAL_SERVER_NAME) !== 'undefined'
 
 const httpOrHttps = (isHttps: boolean) => isHttps ? "HTTPS" : "HTTP"
@@ -97,14 +98,24 @@ if (hasFrontend) {
 const server = useTls ? https.createServer(sslOptions, app) : http.createServer(app)
 const socketIOServer = require('socket.io')(server)
     // Attach server functions to server
-const serverFunction = require('../sockets/sockets').socketServerFunctions
-socketIOServer.on('connection', serverFunction)
+const serverFunction = useSockets ? require('../sockets/sockets').socketServerFunctions : undefined
+if (useSockets) {
+    socketIOServer.on('connection', serverFunction)
+}
+
 //Create HTTP server
 // http.createServer(app).listen(process.env.HTTP_PORT)
+
+const bootOptionMessages: [string, string][] = [
+    [usingTlsMessage, trueFalseEnabledDisabled(useTls)],
+    [usingSocketsMessage, trueFalseEnabledDisabled(useSockets)],
+    [hasFrontendBootMessage, trueFalseEnabledDisabled(hasFrontend)]
+]
+
 server.listen(serverPort, () => {
-	console.group(`Serving ${hasName ? process.env.INTERNAL_SERVER_NAME : defaultServerName} over ${httpOrHttps(useTls)} on port ${serverPort}`)
-        console.log(usingTlsMessage, trueFalseEnabledDisabled(useTls))
-        console.log(hasFrontendBootMessage, trueFalseEnabledDisabled(hasFrontend)) 
+	console.group(`${hasName ? process.env.INTERNAL_SERVER_NAME : defaultServerName} is serving ${httpOrHttps(useTls)} on port ${serverPort}`)
+        bootOptionMessages
+            .forEach((message: [string, string]) => console.log(message[0], message[1]))
     console.groupEnd()
 })
 

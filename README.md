@@ -63,6 +63,7 @@ Below is the expected format of the file:
 - **`CERT_FILE`**: Name of certificate file in *certs*. If left empty, expected file is *certs/server.crt*    
 - **`DATABASE_URL`**: (optional) Database connection URL
 - **`FRONTEND`**: (optional) set to `true` to enable the React frontend. 
+- **`SOCKETS`**: (optional) set to `true` to enable Socket.io server
 
 #### Choosing a Database
 

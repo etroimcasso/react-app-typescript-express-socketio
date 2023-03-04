@@ -1,11 +1,7 @@
-export class WebPathHelper {
-    routeRoot: String
-
-    constructor(routeRoot: String) {
-        this.routeRoot = routeRoot
-    }
-
-    path(endpoint: String): String {
-        return `${this.routeRoot}${ endpoint != '/' ? `/${endpoint}` : '/'}`
-    }
+export type WebPathHelper = {
+    path: (string) => string
 }
+
+export const WebPathHelper = (routeRoot: string): WebPathHelper => ({
+    path: (endpoint: string) => `${routeRoot}${ endpoint != '/' ? `/${endpoint}` : '/'}`
+})
