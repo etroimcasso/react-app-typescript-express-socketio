@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+import { defaultServerName } from "../resources/strings";
 import { bootCheck } from "./bootCheck";
 
 const express = require('express')
@@ -14,7 +15,8 @@ const https = require('https');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
-const useTls = typeof(process.env.NO_TLS) !== 'undefined' ? true : false
+const useTls = typeof(process.env.NO_TLS) !== 'undefined'
+const serverHasName = typeof(process.env.INTERNAL_SERVER_NAME) !== 'undefined'
 
 if (!bootCheck(useTls)) {
     if (process) process.exit()
@@ -96,7 +98,7 @@ socketIOServer.on('connection', serverFunction)
 //Create HTTP server
 // http.createServer(app).listen(process.env.HTTP_PORT)
 server.listen(serverPort, () => {
-	console.log(`Serving ${process.env.INTERNAL_SERVER_NAME} on port ${serverPort}`)
+	console.log(`Serving ${serverHasName ? process.env.INTERNAL_SERVER_NAME : defaultServerName} on port ${serverPort}`)
 })
 
 if (process.send) process.send!('ready')
