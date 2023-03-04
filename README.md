@@ -50,7 +50,9 @@ yarn doEverything
 
 ### Configure Project Settings
 
-The *.env* file is used to configure the application's ports, email settings, and database settings. The file *.env.template* contains a template of the file and can be simply renamed *.env* if desired. Below is the expected format of the file: 
+The *.env* file is used to configure the application's ports, email settings, and database settings. The file *.env.template* contains a template of the file and can be simply renamed *.env* if desired. *Any value that expects a true or false can also be omitted entirely (omit variable name or value) from the file to indicate a FALSE value.* 
+
+Below is the expected format of the file: 
 
 - **`INTERNAL_SERVER_NAME`**: Used only for console logging at the moment  
 - **`HTTP_PORT`**: The port to serve HTTP from  
@@ -60,7 +62,7 @@ The *.env* file is used to configure the application's ports, email settings, an
 - **`KEY_FILE`**: Name of private key file in *certs*. If left empty, expected file is *certs/server.key* 
 - **`CERT_FILE`**: Name of certificate file in *certs*. If left empty, expected file is *certs/server.crt*    
 - **`DATABASE_URL`**: (optional) Database connection URL
-- **`FRONTEND`**: (optional) set to `true` to enable the React frontend
+- **`FRONTEND`**: (optional) set to `true` to enable the React frontend. 
 
 #### Choosing a Database
 

@@ -1,6 +1,7 @@
 require('dotenv').config()
 
-import { defaultServerName } from "../resources/strings";
+import { checkEnvBooleanValue } from "../helpers/envFunctions";
+import { defaultServerName, hasFrontendBootMessage, trueFalseEnabledDisabled, usingTlsMessage } from "../resources/strings";
 import { bootCheck } from "./bootCheck";
 
 const express = require('express')
@@ -15,8 +16,11 @@ const https = require('https');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
-const useTls = typeof(process.env.NO_TLS) !== 'undefined'
-const serverHasName = typeof(process.env.INTERNAL_SERVER_NAME) !== 'undefined'
+const useTls = !checkEnvBooleanValue(process.env.NO_TLS)
+const hasFrontend = checkEnvBooleanValue(process.env.FRONTEND)
+const hasName = typeof(process.env.INTERNAL_SERVER_NAME) !== 'undefined'
+
+const httpOrHttps = (isHttps: boolean) => isHttps ? "HTTPS" : "HTTP"
 
 if (!bootCheck(useTls)) {
     if (process) process.exit()
@@ -84,7 +88,7 @@ require('../routes/routes').routes(app)
 // Add React app route
 //! Should always be the last routes added
 // Catch All (for react app)
-if (process.env.FRONTEND) {
+if (hasFrontend) {
     app.get("/*", (req, res) => renderRoot(res))
 }
 //#endregion
@@ -98,7 +102,10 @@ socketIOServer.on('connection', serverFunction)
 //Create HTTP server
 // http.createServer(app).listen(process.env.HTTP_PORT)
 server.listen(serverPort, () => {
-	console.log(`Serving ${serverHasName ? process.env.INTERNAL_SERVER_NAME : defaultServerName} on port ${serverPort}`)
+	console.group(`Serving ${hasName ? process.env.INTERNAL_SERVER_NAME : defaultServerName} over ${httpOrHttps(useTls)} on port ${serverPort}`)
+        console.log(usingTlsMessage, trueFalseEnabledDisabled(useTls))
+        console.log(hasFrontendBootMessage, trueFalseEnabledDisabled(hasFrontend)) 
+    console.groupEnd()
 })
 
 if (process.send) process.send!('ready')
