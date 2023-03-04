@@ -1,0 +1,1 @@
+export const missingConfigMessage = 'CONFIG ERROR - Missing Configuration Variables:'

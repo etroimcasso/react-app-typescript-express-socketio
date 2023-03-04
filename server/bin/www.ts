@@ -1,16 +1,26 @@
 require('dotenv').config()
 
+import { bootCheck } from "./bootCheck";
+
 const express = require('express')
 const forceSSL = require('express-force-ssl')
 const app = express()
 
 const path = require('path');
 const fs = require('fs');
-// const http = require('http');
+const http = require('http');
 const https = require('https');
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+
+const useTls = typeof(process.env.NO_TLS) !== 'undefined' ? true : false
+
+if (!bootCheck(useTls)) {
+    if (process) process.exit()
+}
+
+const serverPort = useTls ? process.env.HTTPS_PORT : process.env.HTTP_PORT
 
 const defaultKeyFileName = "server.key"
 const defaultCertFileName = "server.crt"
@@ -25,11 +35,11 @@ const cert_file = process.env.CERT_FILE ? (() => {
     return cert!.length > 0 ? cert : defaultCertFileName 
 })() : defaultCertFileName
 
-const sslOptions = {
+const sslOptions = useTls ? {
 	httpsPort: process.env.HTTPS_PORT,
   	key: fs.readFileSync(path.join(__dirname,`../../certs/${key_file ?? "server.key"}`)),
   	cert: fs.readFileSync(path.join(__dirname,`../../certs/${cert_file ?? "server.crt"}`)),
-}
+} : {}
 
 export const rootPath = path.join(__dirname, '../..', 'build')
 export const renderRoot = (res) => res.sendFile('index.html', { root: rootPath })
@@ -42,10 +52,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(cookieParser())
 
-app.set('forceSSLOptions', {
-    httpsPort: process.env.HTTPS_PORT
-})
-app.use(forceSSL)
+if (useTls) {
+    app.set('forceSSLOptions', {
+        httpsPort: process.env.HTTPS_PORT
+    })
+    app.use(forceSSL)
+}
 
 //#region Add static path, root file paths, custom routes, and React app routes
 
@@ -70,20 +82,21 @@ require('../routes/routes').routes(app)
 // Add React app route
 //! Should always be the last routes added
 // Catch All (for react app)
-// -------Comment out the following line to disable the front end React app
-app.get("/*", (req, res) => renderRoot(res))
+if (process.env.FRONTEND) {
+    app.get("/*", (req, res) => renderRoot(res))
+}
 //#endregion
 
 // Create HTTP/S server with socketIO functionality
-const server = https.createServer(sslOptions, app)
+const server = useTls ? https.createServer(sslOptions, app) : http.createServer(app)
 const socketIOServer = require('socket.io')(server)
     // Attach server functions to server
 const serverFunction = require('../sockets/sockets').socketServerFunctions
 socketIOServer.on('connection', serverFunction)
-    //Create HTTP server
+//Create HTTP server
 // http.createServer(app).listen(process.env.HTTP_PORT)
-server.listen(process.env.HTTPS_PORT,() => {
-	console.log(`Serving ${process.env.INTERNAL_SERVER_NAME} on port ${process.env.HTTPS_PORT}`)
+server.listen(serverPort, () => {
+	console.log(`Serving ${process.env.INTERNAL_SERVER_NAME} on port ${serverPort}`)
 })
 
 if (process.send) process.send!('ready')

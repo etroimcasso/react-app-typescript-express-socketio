@@ -56,9 +56,11 @@ The *.env* file is used to configure the application's ports, email settings, an
 - **`HTTP_PORT`**: The port to serve HTTP from  
 - **`HTTPS_PORT`**: The port to serve HTTPS from  
 - **`NO_ROBOTS`**: Enables (`true`) or disables(`false`) *robots.txt*.  
+- **`NO_TLS`**: Setting to `true` allows the application to run in normal HTTP. Disables the requirement that `KEY_FILE` and `CERT_FILE` be specified 
 - **`KEY_FILE`**: Name of private key file in *certs*. If left empty, expected file is *certs/server.key* 
 - **`CERT_FILE`**: Name of certificate file in *certs*. If left empty, expected file is *certs/server.crt*    
 - **`DATABASE_URL`**: (optional) Database connection URL
+- **`FRONTEND`**: (optional) set to `true` to enable the React frontend
 
 #### Choosing a Database
 
