@@ -2,7 +2,7 @@ require('dotenv').config()
 
 import { checkEnvBooleanValue } from "../helpers/envFunctions";
 import { defaultServerName, hasFrontendBootMessage, trueFalseEnabledDisabled, usingSocketsMessage, usingTlsMessage } from "../resources/strings";
-import { bootCheck } from "./bootCheck";
+import { hasRequiredEnvironmentVariables } from "./bootCheck";
 
 const express = require('express')
 const forceSSL = require('express-force-ssl')
@@ -23,7 +23,7 @@ const hasName = typeof(process.env.INTERNAL_SERVER_NAME) !== 'undefined'
 
 const httpOrHttps = (isHttps: boolean) => isHttps ? "HTTPS" : "HTTP"
 
-if (!bootCheck(useTls)) {
+if (!hasRequiredEnvironmentVariables(useTls)) {
     if (process) process.exit()
 }
 
@@ -109,7 +109,7 @@ if (useSockets) {
 const bootOptionMessages: [string, string][] = [
     [usingTlsMessage, trueFalseEnabledDisabled(useTls)],
     [usingSocketsMessage, trueFalseEnabledDisabled(useSockets)],
-    [hasFrontendBootMessage, trueFalseEnabledDisabled(hasFrontend)]
+    [hasFrontendBootMessage, trueFalseEnabledDisabled(hasFrontend)],
 ]
 
 server.listen(serverPort, () => {

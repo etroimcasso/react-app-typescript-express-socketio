@@ -1,6 +1,6 @@
 import { missingConfigMessage } from "../resources/strings"
 
-export const bootCheck = (useTls: boolean) => {
+export const hasRequiredEnvironmentVariables = (useTls: boolean): boolean => {
     const requiredEnv = [
         "HTTP_PORT",
     ]
