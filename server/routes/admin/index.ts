@@ -13,6 +13,8 @@ const wph: WebPathHelper = WebPathHelper(routeRoot)
 export const routes = (app: any) => {
     // GET: Login
     app.get(wph.path("login"), asyncRoute((req, res) => {
+
+        
     }))
 
     // POST: Login
