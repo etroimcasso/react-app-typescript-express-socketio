@@ -25,8 +25,6 @@ export const saltAndHashPassword = (password: string): Promise<string> => {
         return new Promise((_, reject) => reject(errorString))
     }
 
-    // TODO -- salt and hash this first
-    // const newPassword: string = isNakama ? "" : ""
     const newPassword: string = bcrypt.hashSync(password, saltRounds)
 
     return new Promise((resolve, _) => resolve(newPassword))
