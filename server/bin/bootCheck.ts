@@ -5,13 +5,13 @@ export const hasRequiredEnvironmentVariables = (useTls: boolean): boolean => {
         "HTTP_PORT",
     ]
 
-    const requiredSslEnv = [
+    const requiredTlsEnv = [
         "HTTPS_PORT",
         "KEY_FILE",
         "CERT_FILE"
     ]
 
-    const requiredAll = useTls ? [...requiredEnv, ...requiredSslEnv] : requiredEnv
+    const requiredAll = useTls ? [...requiredEnv, ...requiredTlsEnv] : requiredEnv
 
     const envCheck: {[key: string]: boolean} = requiredAll.reduce((acc, cv) => (
         {

@@ -64,6 +64,7 @@ Below is the expected format of the file:
 - **`DATABASE_URL`**: (optional) Database connection URL
 - **`FRONTEND`**: (optional) set to `true` to enable the React frontend. 
 - **`SOCKETS`**: (optional) set to `true` to enable Socket.io server
+- **`VERBOSE_TASKS`**: (optional) set to `true` to have repeating and cron tasks report their statuses to the console
 
 #### Choosing a Database
 
