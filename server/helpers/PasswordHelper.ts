@@ -11,7 +11,6 @@ const bcrypt = require('bcrypt');
 
 const saltRounds = 8;
 
-// isNakama is so specific nakama password formatting can be used
 export const saltAndHashPassword = (password: string): Promise<string> => {
     const passwordErrorStates: ErrorCheckTuple[] = [
         [password.length <= 0 || password === "", "Password is too short"]
