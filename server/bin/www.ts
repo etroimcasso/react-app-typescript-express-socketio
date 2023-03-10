@@ -84,7 +84,7 @@ const publicSharePath = `${rootPath}/share`
 app.get("/share/:fileName(*)", (req, res, next) => res.sendFile(path.join(publicSharePath, `${req.params.fileName}`)))
 
 // Add custom routes
-require('../routes/routes').routes(app)
+require('../routes').routes(app)
 
 // Add React app route
 //! Should always be the last routes added
