@@ -98,7 +98,7 @@ if (hasFrontend) {
 const server = useTls ? https.createServer(sslOptions, app) : http.createServer(app)
 const socketIOServer = require('socket.io')(server)
     // Attach server functions to server
-const serverFunction = useSockets ? require('../sockets/sockets').socketServerFunctions : undefined
+const serverFunction = useSockets ? require('../sockets').socketServerFunctions : undefined
 if (useSockets) {
     socketIOServer.on('connection', serverFunction)
 }
