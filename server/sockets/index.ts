@@ -19,7 +19,7 @@ const getTestInfoSocket: SocketFunctionEntry = {
 
 const socketFunctionsWithDefaultHandler: SocketFunctionEntry[] = [
     getTestInfoSocket,
-    // Put Default handler compatible socket functions here
+    //! Put Default handler compatible socket functions here
 ]
 
 export const socketServerFunctions = (client) => {
