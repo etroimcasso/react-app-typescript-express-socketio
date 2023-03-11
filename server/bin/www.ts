@@ -19,6 +19,7 @@ const cookieParser = require('cookie-parser');
 const useTls = !checkEnvBooleanValue(process.env.NO_TLS)
 const hasFrontend = checkEnvBooleanValue(process.env.FRONTEND)
 const useSockets = checkEnvBooleanValue(process.env.SOCKETS)
+const useGraphQl = checkEnvBooleanValue(process.env.GRAPHQL)
 const hasName = typeof(process.env.INTERNAL_SERVER_NAME) !== 'undefined' && process.env.INTERNAL_SERVER_NAME !== ''
 
 const httpOrHttps = (isHttps: boolean) => isHttps ? "HTTPS" : "HTTP"
