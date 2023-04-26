@@ -2,7 +2,7 @@ require('dotenv').config()
 
 import { checkEnvBooleanValue } from "../helpers/envFunctions";
 import { defaultServerName, hasFrontendBootMessage, trueFalseEnabledDisabled, usingSocketsMessage, usingTlsMessage } from "../resources/strings";
-import { hasRequiredEnvironmentVariables } from "./bootCheck";
+import { hasRequiredEnvironmentVariables } from "../helpers/bootCheck";
 
 const express = require('express')
 const forceSSL = require('express-force-ssl')
