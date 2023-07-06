@@ -1,6 +1,6 @@
 import { ReminderType } from "./ReminderType"
 
-export type MarketingSetting = {
+export type ReminderSetting = {
     email: boolean,
     push: boolean,
     sms: boolean,
