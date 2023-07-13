@@ -7,8 +7,10 @@ export const metersToMiles = (meters: number): number => meters * _meterMilesCon
 export const milesToMeters = (miles: number): number => miles / _meterMilesConstant
 
 export const secondsInMinute = 60
+export const minutesInHour = secondsInMinute
 export const milliSecondsInSecond = 1000
 export const milliSecondsInMinute = milliSecondsInSecond * secondsInMinute
+export const milliSecondsInHour = milliSecondsInMinute * minutesInHour
 
 export const secondsToMilliseconds = (seconds: number): number =>
     seconds * milliSecondsInSecond
