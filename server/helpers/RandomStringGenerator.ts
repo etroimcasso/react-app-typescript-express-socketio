@@ -16,20 +16,14 @@ export const generateRandomString = (length: number) => {
     */
     return Array.from(Array(length).keys()).reduce((fullString: string): string => {
         const nextCharacter: string | number = (() => {
-            switch (randomRange(0,8)) {
+            switch (randomRange(0, 3)) {
                 case 0:
-                case 1:
-                case 2:
                     //uppercase
                     return String.fromCharCode(randomRange(65,90))
-                case 3:
-                case 4:
-                case 5:
+                case 1:
                     //lowercase
                     return String.fromCharCode(randomRange(97,122))
-                case 6:
-                case 7:
-                case 8:
+                case 2:
                     //number
                     return randomRange(0,9)
                 default:
