@@ -1,7 +1,6 @@
 import { Maybe } from "graphql/jsutils/Maybe"
 import { GenericAxiosError } from "../../helpers/AxiosError"
 import { AxiosResponse } from "../../model/AxiosResponse"
-// import { ThirdPartyService } from "../../model/ThirdPartyService"
 import { AccessTokenResponse } from "./model/AccessTokenResponse"
 import { GrantType } from "./model/GrantType"
 import { RefreshTokenRequest } from "./model/RefreshTokenRequest"
