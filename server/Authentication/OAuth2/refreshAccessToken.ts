@@ -9,7 +9,6 @@ import { oAuthAuthenticationHeaderContents } from "./authenticationHeader"
 const axios = require('axios')
 
 export const refreshAccessToken = async (
-    // service: ThirdPartyService,
     service: string,
     requestUrl: string,
     clientId: string,
